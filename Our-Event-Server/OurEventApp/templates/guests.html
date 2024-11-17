@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+
+
+{% block title %}
+    Our Event - List of all guests
+{% endblock %}
+
+{% block content %}
+     <p><a href='/'>HOME</a></p>
+    <h1>Guests</h1>
+    <ul>
+        {% for x in guests %}
+        <li><a href="details/{{x.id}}">{{x.firstname}} {{x.lastname}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
