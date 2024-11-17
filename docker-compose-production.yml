@@ -1,0 +1,38 @@
+services:
+  our_event_server:
+    build:
+      context: ./Our-Event-Server
+      dockerfile: Dockerfile
+      target: production
+    volumes:
+      - ./Our-Event-Server:/app
+      - /.env
+      - app_static:/app/static
+    environment:
+      - IS_PRODUCTION=False
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_HOST
+      - POSTGRES_PORT
+      - POSTGRES_DB
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - app_static:/app/static
+      - spa:/app/spa
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - our_event_server
+  our_event_client:
+    build:
+      context: ./Our-Event-Client
+      dockerfile: Dockerfile
+    volumes:
+      - ./Our-Event-Client:/app
+      - spa:/app/dist
+volumes:
+  app_static:
+  spa:
