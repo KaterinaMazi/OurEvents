@@ -15,7 +15,7 @@ urlpatterns = [
     path('events/<int:event_id>/partners/', PartnerViewSet.as_view({'get': 'list'}), name='partner-list'),
     path('events/<int:event_id>/activities/', ActivityViewSet.as_view({'get': 'list'}), name='activity-list'),
     path('events/<int:event_id>/registrations/', RegistrationViewSet.as_view({'get': 'list', 'post': 'create', 'delete': 'destroy'}), name='registration-list'),
-
+    path('events/<int:event_id>/registered/', RegistrationViewSet.as_view({'get': 'registered'}), name='registration-check'),
     path('events/<int:event_id>/media/', MediaViewSet.as_view({'get': 'list', 'post': 'create'}), name='media-list'),
     path('events/<int:event_id>/media/<int:pk>/', MediaViewSet.as_view({'delete': 'destroy'}), name='media-detail'),
 

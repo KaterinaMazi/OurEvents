@@ -12,6 +12,8 @@ function Home() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    console.log(events.length)
+
     const allMedia = events.flatMap((item) => {
         return item.media_files;
     });
@@ -105,6 +107,12 @@ function Home() {
             {error && <Alert variant="danger" className="text-center">Σφάλμα: {error}</Alert>}
 
             {!loading && !error && <Events events={events} />}
+            
+            {events && events.length === 0 && !error && (
+                <Alert className="mt-3 text-center" variant="info">
+                No events were found.
+                </Alert>
+            )} 
         </>
     );
 }

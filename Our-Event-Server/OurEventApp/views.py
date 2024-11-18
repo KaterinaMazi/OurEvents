@@ -2,6 +2,7 @@ from .models import Activity, Event, Media, Partner, Registration
 from .serializers import ActivitySerializer, EventSerializer, MediaSerializer, PartnerSerializer, RegistrationSerializer
 from rest_framework import status, generics, viewsets
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import action
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
@@ -68,6 +69,15 @@ class RegistrationViewSet(viewsets.ModelViewSet):
             return Response({"detail": "Έχετε αποχωρήσει από το event."}, status=status.HTTP_204_NO_CONTENT)
         except Registration.DoesNotExist:
             return Response({"detail": "Δεν υπάρχει εγγραφή για το συγκεκριμένο event."}, status=status.HTTP_404_NOT_FOUND)
+        
+    @action(detail=False, methods=['get'])        
+    def registered(self, request, event_id=None):
+        event = get_object_or_404(Event, id=event_id)
+        try:
+            registration = Registration.objects.get(user=request.user, event=event)
+            return Response({"registered": True}, status=status.HTTP_200_OK)
+        except Registration.DoesNotExist:
+            return Response({"registered": False}, status=status.HTTP_404_NOT_FOUND)
         
 
 class MediaViewSet(viewsets.ModelViewSet):

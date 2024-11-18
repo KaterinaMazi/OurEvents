@@ -16,7 +16,7 @@ const RegistrationPage = () => {
     useEffect(() => {
         const checkRegistration = async () => {
             try {
-                const response = await fetch(`/api/events/${id}/registrations/`, {
+                const response = await fetch(`/api/events/${id}/registered/`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -24,9 +24,9 @@ const RegistrationPage = () => {
                     credentials: 'include',
                 });
 
-                if (response.ok) {
+                if (response.ok || response.status === 404) {
                     const data = await response.json();
-                    const userIsRegistered = data.some(registration => registration.user === currentUserId);
+                    const userIsRegistered = data.registered
                     setIsRegistered(userIsRegistered);
 
                     if (userIsRegistered) {
