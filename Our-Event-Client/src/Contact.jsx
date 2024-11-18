@@ -27,7 +27,7 @@ const Contact = () => {
       return;
     }
 
-    const mailtoLink = `mailto:katerina.aliki@hotmail.com?subject=Message from ${encodeURIComponent(
+    const mailtoLink = `mailto:katerinaaliki1989@gmail.com?subject=Message from ${encodeURIComponent(
       name
     )}&body=${encodeURIComponent(`Name: ${name}\n\nMessage:\n${message}`)}`;
 
@@ -46,11 +46,6 @@ const Contact = () => {
             {isError && (
               <Alert variant="danger">
                 Please fill in both fields before submitting.
-              </Alert>
-            )}
-            {isSubmitted && !isError && (
-              <Alert variant="success">
-                Your message has been sent successfully!
               </Alert>
             )}
 

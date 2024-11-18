@@ -39,7 +39,7 @@ const RegistrationPage = () => {
                 }
             } catch (error) {
                 console.error('Error during registration check:', error);
-                setMessage('Σφάλμα κατά τον έλεγχο εγγραφής. Δοκιμάστε ξανά.');
+                setMessage('Error checking registration. Please try again.');
             } finally {
                 setLoading(false);
             }
@@ -67,7 +67,7 @@ const RegistrationPage = () => {
             }
         } catch (error) {
             console.error('Error during registration:', error);
-            setMessage('Σφάλμα κατά την δήλωση συμμετοχής. Δοκιμάστε ξανά.');
+            setMessage('Error submitting participation. Please try again.');
         }
     };
 
@@ -90,7 +90,7 @@ const RegistrationPage = () => {
             }
         } catch (error) {
             console.error('Error during withdrawal:', error);
-            setMessage('Σφάλμα κατά την αποχώρηση. Δοκιμάστε ξανά.');
+            setMessage('Error during exit. Please try again.');
         }
     };
 

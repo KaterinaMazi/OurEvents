@@ -29,7 +29,7 @@ const OurPartners = () => {
       } catch (error) {
         console.error('Error fetching partners:', error);
         setError(true);
-        setMessage('Σφάλμα κατά την φόρτωση των partners. Δοκιμάστε ξανά.');
+        setMessage('Error loading the partners. Please try again.');
         setLoading(false);
       }
     };
@@ -58,7 +58,7 @@ const OurPartners = () => {
 
       {partners.length === 0 && !error ? (
         <Alert className="mt-3 text-center" variant="info">
-          No partners were found for this event.
+          Δεν βρέθηκαν συνεργάτες για αυτήν την εκδήλωση.
         </Alert>
       ) : (
         <ListGroup className="mt-3">

@@ -24,7 +24,7 @@ const Videos = ({ videos, isAdmin, handleDelete }) => {
         <>
             {videos.length === 0 ? (
                 <Alert className="mt-3" variant="info">
-                    No videos were found for this event.
+                    Δεν βρέθηκαν βίντεο για αυτήν την εκδήλωση.
                 </Alert>
             ) : (
                 <Row className="mb-4">

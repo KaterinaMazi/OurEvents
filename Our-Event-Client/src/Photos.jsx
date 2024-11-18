@@ -27,7 +27,7 @@ const Photos = ({ images, isAdmin, handleDelete }) => {
 
             {images.length === 0 ? (
                 <Alert className="mt-3" variant="info">
-                    No photos were found for this event.
+                    Δεν βρέθηκαν φωτογραφίες για αυτήν την εκδήλωση.
                 </Alert>
             ) : (
                 <Row className="mb-4">

@@ -83,7 +83,7 @@ function Home() {
                                     Είτε αναζητάς κάτι χαλαρό, είτε κάτι πιο συναρπαστικό, εδώ θα βρεις αυτό που ψάχνεις!
                                 </Card.Text>
 
-                                <ImageCarousel mediaFiles={allMedia} />
+                                {allMedia.length > 0 && <ImageCarousel mediaFiles={allMedia} />}
 
                                 <Card.Footer style={footerStyle}>
                                     <h5>
@@ -110,7 +110,7 @@ function Home() {
             
             {events && events.length === 0 && !error && (
                 <Alert className="mt-3 text-center" variant="info">
-                No events were found.
+                Δεν βρέθηκαν εκδηλώσεις.
                 </Alert>
             )} 
         </>

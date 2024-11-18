@@ -31,7 +31,7 @@ const Gallery = () => {
     } catch (error) {
       console.error('Σφάλμα κατά την ανάκτηση μέσων:', error);
       setError(true);
-      setMessage('Αποτυχία στην ανάκτηση των μέσων.');
+      setMessage('Failed to retrieve the media.');
     } finally {
       setLoading(false);
     }

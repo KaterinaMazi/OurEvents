@@ -2,7 +2,7 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { FaFacebook, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 function Menu() {
     const location = useLocation();
@@ -54,19 +54,14 @@ function Menu() {
 
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link text-light" href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                                    <FaFacebook style={{ fontSize: '20px' }} />
+                                <a className="nav-link text-light" href="https://www.linkedin.com/in/katerina-mazi/" target="_blank" rel="noopener noreferrer">
+                                    <FaLinkedin style={{ fontSize: '20px' }} />
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-light" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                                    <FaInstagram style={{ fontSize: '20px' }} />
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-light" href="mailto:katerina.aliki@hotmail.com">
+                                <a className="nav-link text-light" href="mailto:katerinaaliki1989@gmail.com">
                                     <FaEnvelope style={{ fontSize: '20px' }} />
-                                    <span style={{ marginLeft: '5px' }}>katerina.aliki@hotmail.com</span>
+                                    <span style={{ marginLeft: '5px' }}>katerinaaliki1989@gmail.com</span>
                                 </a>
                             </li>
                             <li className="nav-item ms-3">

@@ -30,7 +30,7 @@ const Activities = () => {
       } catch (error) {
         console.error('Error fetching activities:', error);
         setError(true);
-        setMessage('Σφάλμα κατά την φόρτωση δραστηριοτήτων. Δοκιμάστε ξανά.');
+        setMessage('Error loading activities. Please try again.');
         setLoading(false);
       }
     };
@@ -59,7 +59,7 @@ const Activities = () => {
 
       {activities.length === 0 && !error ? (
         <Alert className="mt-3 text-center" variant="info">
-          No activities were found for this event.
+          Δεν βρέθηκαν δραστηριότητες για αυτήν την εκδήλωση..
         </Alert>
       ) : (
         <ListGroup className="mt-3">
