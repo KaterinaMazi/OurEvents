@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: OurEvents
+    env: docker
+    buildCommand: docker-compose -f docker-compose-production.yml build
+    startCommand: docker-compose -f docker-compose-production.yml up --build
+    plan: free
