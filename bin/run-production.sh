@@ -18,7 +18,7 @@ sudo systemctl status docker # Check final status
 
 # Generate SSL certificate
 
-docker compose run -f ../docker-compose-production.yml certbot certonly --webroot -w /var/www/certbot --email takischampion@gmail.com --agree-tos --no-eff-email -d our-events.site
+docker compose -f ../docker-compose-production.yml run certbot certonly --webroot -w /var/www/certbot --email takischampion@gmail.com --agree-tos --no-eff-email -d our-events.site
 
 # Start the app
 docker compose -f ../docker-compose-production.yml up --build
