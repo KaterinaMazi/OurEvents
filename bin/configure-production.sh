@@ -16,12 +16,6 @@ sudo apt install docker-ce -y
 sudo systemctl enable docker
 sudo systemctl status docker # Check final status
 
-# Generate SSL certificate
 
-docker compose -f ../docker-compose-production.yml run certbot certonly --webroot -w /var/www/certbot --email takischampion@gmail.com --agree-tos --no-eff-email -d our-events.site
-
-# Start the app
-docker compose -f ../docker-compose-production.yml up --build
-
-# Schedule Nginx reload with certificate refresh (every 12 hours)
-0 */12 * * * refresh-ssl.sh
+# Start server
+bash start-server.sh
