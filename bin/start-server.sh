@@ -13,4 +13,7 @@ docker compose -f docker-compose-production.yml run certbot certonly --webroot -
 docker compose -f docker-compose-production.yml exec nginx nginx -s reload
 
 # Schedule Nginx reload with certificate refresh (every 12 hours)
-0 */12 * * * bin/refresh-ssl.sh
+CRON_JOB="0 */12 * * * /path/to/refresh-ssl.sh >> bin/refresh-ssl.log 2>&1"
+
+# Check if the cron job already exists to prevent duplication
+(crontab -l | grep -F "$CRON_JOB") || (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
