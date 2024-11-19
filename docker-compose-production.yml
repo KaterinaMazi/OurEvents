@@ -8,7 +8,7 @@ services:
       - ./Our-Event-Server:/app
       - /.env
       - app_static:/app/static
-      - certbot-etc:/etc/letsencrypt/:ro
+      - certbot-etc:/etc/letsencrypt/:rw
 
     environment:
       - IS_PRODUCTION
@@ -26,7 +26,7 @@ services:
       - app_static:/app/static
       - spa:/app/spa
       - certbot-var:/var/www/certbot/:ro
-      - certbot-etc:/etc/letsencrypt/:ro
+      - certbot-etc:/etc/letsencrypt/:rw
     ports:
       - "80:80"
       - "443:443"
