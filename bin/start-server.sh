@@ -13,4 +13,4 @@ docker compose -f docker-compose-production.yml run certbot certonly --webroot -
 docker compose -f docker-compose-production.yml exec nginx nginx -s reload
 
 # Schedule Nginx reload with certificate refresh (every 12 hours)
-0 */12 * * * refresh-ssl.sh
+0 */12 * * * bin/refresh-ssl.sh
