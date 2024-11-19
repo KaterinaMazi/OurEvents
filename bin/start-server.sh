@@ -1,5 +1,5 @@
 # Start the app
-docker compose -f docker-compose-production.yml up --build
+docker compose -f docker-compose-production.yml up --build -d
 
 # Delete dummy certificate
 docker compose -f docker-compose-production.yml exec nginx rm -rf /etc/letsencrypt/live/our-events.site
