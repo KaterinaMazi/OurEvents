@@ -173,3 +173,4 @@ AUTH_USER_MODEL = 'OurEventApp.User'
 SECURE_SSL_REDIRECT = False # We use nginx instead
 CSRF_COOKIE_SECURE = is_production
 SESSION_COOKIE_SECURE = is_production
+CSRF_TRUSTED_ORIGINS = ['https://our-events.site/']
