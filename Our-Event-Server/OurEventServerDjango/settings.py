@@ -28,7 +28,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not is_production
+DEBUG = True
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-(zrsaa=66)!3*fmy1gd3)wjt_m8b86j^e*w1d3o)9up^b4b-r3')
 

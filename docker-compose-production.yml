@@ -11,7 +11,7 @@ services:
       - certbot-etc:/etc/letsencrypt/:rw
 
     environment:
-      - IS_PRODUCTION
+      - IS_PRODUCTION=True
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_HOST
