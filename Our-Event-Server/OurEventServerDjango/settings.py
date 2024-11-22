@@ -174,7 +174,10 @@ SECURE_SSL_REDIRECT = False # We use nginx instead
 CSRF_COOKIE_SECURE = is_production
 SESSION_COOKIE_SECURE = is_production
 
-ALLOWED_HOSTS = ["our-events.site"]
-CSRF_TRUSTED_ORIGINS = ["https://our-events.site"]
-CSRF_ALLOWED_ORIGINS = ["https://our-events.site"]
-CORS_ORIGINS_WHITELIST = ["https://our-events.site"]
+
+
+if is_production:
+    ALLOWED_HOSTS = ["our-events.site"]
+    CSRF_TRUSTED_ORIGINS = ["https://our-events.site"]
+    CSRF_ALLOWED_ORIGINS = ["https://our-events.site"]
+    CORS_ORIGINS_WHITELIST = ["https://our-events.site"]    
