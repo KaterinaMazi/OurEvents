@@ -26,9 +26,9 @@ function Menu() {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#2C3E50' }}>
+            <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#2C3E50' }}>
                 <div className="container-fluid">
-                    <Link className="navbar-brand text-light" to="/" style={{ fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>Home</Link>
+                    <Link className="navbar-brand text-light" to="/">Home</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
