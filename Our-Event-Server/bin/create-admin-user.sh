@@ -29,3 +29,4 @@ except User.DoesNotExist:
         password='$ADMIN_PASSWORD',
     )
     print("Admin user created.")
+EOF
