@@ -8,23 +8,39 @@ services:
       - ./Our-Event-Server:/app
       - /.env
       - app_static:/app/static
+      - certbot-etc:/etc/letsencrypt/:rw
+
     environment:
-      - IS_PRODUCTION
+      - IS_PRODUCTION=True
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_HOST
       - POSTGRES_PORT
       - POSTGRES_DB
+    depends_on:
+      - certbot
   nginx:
     image: nginx:latest
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - app_static:/app/static
       - spa:/app/spa
+      - certbot-var:/var/www/certbot/:ro
+      - certbot-etc:/etc/letsencrypt/:rw
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - our_event_server
+      - our_event_client
+      - certbot
+  certbot:
+    image: certbot/certbot:latest
+    container_name: certbot
+    volumes:
+      - certbot-var:/var/www/certbot/:rw
+      - certbot-etc:/etc/letsencrypt/:rw
+
   our_event_client:
     build:
       context: ./Our-Event-Client
@@ -36,4 +52,6 @@ services:
 
 volumes:
   app_static:
+  certbot-etc:
+  certbot-var:
   spa:

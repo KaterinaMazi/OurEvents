@@ -28,7 +28,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not is_production
+DEBUG = True
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-(zrsaa=66)!3*fmy1gd3)wjt_m8b86j^e*w1d3o)9up^b4b-r3')
 
@@ -173,3 +173,8 @@ AUTH_USER_MODEL = 'OurEventApp.User'
 SECURE_SSL_REDIRECT = False # We use nginx instead
 CSRF_COOKIE_SECURE = is_production
 SESSION_COOKIE_SECURE = is_production
+
+ALLOWED_HOSTS = ["our-events.site"]
+CSRF_TRUSTED_ORIGINS = ["https://our-events.site"]
+CSRF_ALLOWED_ORIGINS = ["https://our-events.site"]
+CORS_ORIGINS_WHITELIST = ["https://our-events.site"]
