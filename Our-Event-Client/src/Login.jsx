@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
 import { Form, Button, Card, Container, Row, Col, Alert } from 'react-bootstrap';
 
+const GUEST_CREDENTIALS = {
+  username: 'demo',
+  password: '12345'
+};
+
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState(false);
 
-  const login = async (event) => {
+  const on_login = (event) => {
     event.preventDefault();
+    login(username, password);
+  };
+
+  const on_demo_login = () => {
+    login(GUEST_CREDENTIALS.username, GUEST_CREDENTIALS.password);
+  };
+
+  const login = async (username, password) => {
     const response = await fetch('/api/login/', {
       method: 'POST',
       headers: {
@@ -34,7 +47,7 @@ const Login = () => {
             <Card.Body>
               <h3 className="text-center mb-4">Login</h3>
               {error && <Alert variant="danger">{message}</Alert>}
-              <Form onSubmit={login}>
+              <Form onSubmit={on_login}>
                 <Form.Group className="mb-3" controlId="formBasicUsername">
                   <Form.Label>Username</Form.Label>
                   <Form.Control
@@ -63,6 +76,17 @@ const Login = () => {
                   Login
                 </Button>
               </Form>
+
+              <div className="text-center my-3">Or</div>
+
+              <Button
+                variant="secondary"
+                onClick={on_demo_login}
+                className="w-100 py-2"
+                style={{ fontSize: '16px' }}
+              >
+                Try the Demo
+              </Button>
             </Card.Body>
           </Card>
         </Col>
