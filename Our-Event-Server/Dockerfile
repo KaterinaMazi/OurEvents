@@ -14,7 +14,7 @@ COPY --chmod=755 . .
 
 EXPOSE 8000
 
-RUN chmod -x /app/bin/create-admin-user.sh
+RUN chmod +x /app/bin/create-admin-user.sh
 ENTRYPOINT ["sh","./docker-entrypoint.sh"]
 
 FROM build as development
