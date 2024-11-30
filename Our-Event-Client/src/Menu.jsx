@@ -28,7 +28,7 @@ function Menu() {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#2C3E50' }}>
                 <div className="container-fluid">
-                    <Link className="navbar-brand text-light" to="/">Home</Link>
+                    <Link className="navbar-brand text-light pb-2" to="/">Home</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -54,17 +54,17 @@ function Menu() {
 
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link text-light" href="https://www.linkedin.com/in/katerina-mazi/" target="_blank" rel="noopener noreferrer">
-                                    <FaLinkedin style={{ fontSize: '20px' }} />
+                                <a className="nav-link text-light" style={{ fontWeight: '500' }}href="https://www.linkedin.com/in/katerina-mazi/" target="_blank" rel="noopener noreferrer">
+                                    <FaLinkedin style={{ fontSize: '25px', fontWeight: '500' }} />
                                 </a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link text-light" href="mailto:katerinaaliki1989@gmail.com">
-                                    <FaEnvelope style={{ fontSize: '20px' }} />
-                                    <span style={{ marginLeft: '5px' }}>katerinaaliki1989@gmail.com</span>
+                                    <FaEnvelope style={{ fontSize: '25px', marginBottom:"0.1rem", fontWeight: '500' }} />
+                                    <span style={{ marginLeft: '10px', fontWeight: '500' }}>katerinaaliki1989@gmail.com</span>
                                 </a>
                             </li>
-                            <li className="nav-item ms-3">
+                            <li className="nav-item">
                                 <Link className="nav-link text-light" to="/Logout" style={{ fontWeight: '500' }}>Logout</Link>
                             </li>
                         </ul>

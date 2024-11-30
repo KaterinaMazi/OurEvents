@@ -102,7 +102,7 @@ const RegistrationPage = () => {
         <div className="container mt-5">
             {!isRegistered && !error && (
                 <>
-                    <h5>Θα θέλατε να παρευρεθείτε στο event μας;</h5>
+                    <h5 style={{color: '#ecbf39'}}>Θα θέλατε να παρευρεθείτε στο event μας;</h5>
                     <button onClick={handleRegistration} className="btn btn-primary mt-3">Δηλώστε Συμμετοχή</button>
                 </>
             )}
@@ -115,7 +115,7 @@ const RegistrationPage = () => {
 
             {isRegistered && (
                 <>
-                    <h4 className="mt-5">Εάν δεν μπορείτε να παραβρεθείτε, παρακαλούμε ενημερώστε μας έγκαιρα.</h4>
+                    <h5 style={{color: '#ecbf39'}}>Εάν δεν μπορείτε να παραβρεθείτε, παρακαλούμε ενημερώστε μας έγκαιρα.</h5>
                     <button onClick={handleWithdrawal} className="btn btn-danger mt-3">Αποχώρω από το Event</button>
                 </>
             )}

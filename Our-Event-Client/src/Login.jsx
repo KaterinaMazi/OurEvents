@@ -43,9 +43,13 @@ const Login = () => {
     <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
       <Row className="justify-content-center w-100">
         <Col md={6} lg={4}>
-          <Card className="shadow-lg p-4 rounded">
-            <Card.Body>
-              <h3 className="text-center mb-4">Login</h3>
+          <Card className="shadow-lg p-4 rounded"
+            style={{
+              background: 'linear-gradient(180deg, rgba(108,100,128,1) 0%, rgba(72,85,116,1) 49%, rgba(16,26,88,1) 100%)',
+              border: "0",
+            }}>
+            <Card.Body style={{color: "white"}}>
+              <h3 className="text-center mb-4" >Login</h3>
               {error && <Alert variant="danger">{message}</Alert>}
               <Form onSubmit={on_login}>
                 <Form.Group className="mb-3" controlId="formBasicUsername">

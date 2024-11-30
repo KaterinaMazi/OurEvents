@@ -41,23 +41,18 @@ function Home() {
     }, []);
 
     const cardStyle = {
-        background: 'linear-gradient(135deg, #d8cfc4 0%, #a79f91 100%)',
-        padding: '20px',
-        borderRadius: '8px',
+        background: 'radial-gradient(circle, rgba(62,82,63,1) 0%, rgba(128,127,100,1) 49%, rgba(16,26,88,1) 100%)',
+        textShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
+        color: '#ffffff'
     };
 
     const titleStyle = {
         fontFamily: 'Poppins, sans-serif',
         fontWeight: '700',
-        color: '#000',
     };
 
     const footerStyle = {
-        backgroundColor: '#800000',
-        color: '#fff',
-        padding: '10px',
-        borderRadius: '5px',
-        marginTop: '10px',
+        backgroundColor: 'radial-gradient(circle, rgba(250,249,169,1) 3%, rgba(62,131,66,1) 58%, rgba(16,26,88,1) 100%)',
     };
 
     return (
@@ -69,28 +64,37 @@ function Home() {
                             style={cardStyle}
                             className="shadow mb-4"
                         >
-                            <Card.Body>
-                                <Card.Title
-                                    as="h1"
-                                    className="mb-4"
-                                    style={titleStyle}
-                                >
-                                    Ανακάλυψε Μοναδικά Events!
-                                </Card.Title>
-                                <Card.Text className="lead mb-4">
-                                    Στη σελίδα μας θα βρεις μια μεγάλη ποικιλία εκδηλώσεων που καλύπτουν κάθε γούστο και ενδιαφέρον.
-                                    Εξερεύνησε τις επερχόμενες δραστηριότητες, ενημερώσου για τις τελευταίες προσθήκες και βρες την επόμενη εμπειρία που σε περιμένει.
-                                    Είτε αναζητάς κάτι χαλαρό, είτε κάτι πιο συναρπαστικό, εδώ θα βρεις αυτό που ψάχνεις!
-                                </Card.Text>
+                            <Card.Title
+                                as="h3"
+                                className="my-4"
+                                style={titleStyle}
+                            >
+                                Ανακάλυψε Μοναδικά Events!
+                            </Card.Title>
+                            <Card.Text as="h5" className="lead mx-3">
+                                Στη σελίδα μας θα βρεις μια μεγάλη ποικιλία εκδηλώσεων που καλύπτουν κάθε γούστο και ενδιαφέρον.
+                                Εξερεύνησε τις επερχόμενες δραστηριότητες, ενημερώσου για τις τελευταίες προσθήκες και βρες την επόμενη εμπειρία που σε περιμένει.
+                                Είτε αναζητάς κάτι χαλαρό, είτε κάτι πιο συναρπαστικό, εδώ θα βρεις αυτό που ψάχνεις!
+                            </Card.Text>
 
-                                {allMedia.length > 0 && <ImageCarousel mediaFiles={allMedia} />}
+                            {allMedia.length > 0 && <ImageCarousel mediaFiles={allMedia} />}
 
-                                <Card.Footer style={footerStyle}>
-                                    <h5>
-                                        <FaRegSmile className="mr-2" /> Don't miss the opportunity, live the experience!
-                                    </h5>
-                                </Card.Footer>
-                            </Card.Body>
+                            <Card.Footer style={footerStyle}>
+                                <h5 style={{
+                                        color: '#ffe462',
+                                        
+                                    }}>
+                                    <FaRegSmile className="mr-2" style={{
+                                        color: '#ffe462',
+                                        marginRight: '1rem',
+                                        marginBottom: '0.2rem'
+                                    }} 
+                                    /> Don't miss the opportunity, live the experience!
+                                </h5>
+                                <div className="my-4">
+                                    {!loading && !error && <Events events={events} />}
+                                </div>
+                            </Card.Footer>
                         </Card>
                     </Col>
                 </Row>
@@ -106,13 +110,12 @@ function Home() {
 
             {error && <Alert variant="danger" className="text-center">Σφάλμα: {error}</Alert>}
 
-            {!loading && !error && <Events events={events} />}
-            
+
             {events && events.length === 0 && !error && (
                 <Alert className="mt-3 text-center" variant="info">
-                Δεν βρέθηκαν εκδηλώσεις.
+                    Δεν βρέθηκαν εκδηλώσεις.
                 </Alert>
-            )} 
+            )}
         </>
     );
 }

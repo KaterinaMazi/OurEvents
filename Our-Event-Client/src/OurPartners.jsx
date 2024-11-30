@@ -48,7 +48,7 @@ const OurPartners = () => {
 
   return (
     <Container className="mt-5">
-      <h2 className="text-dark mb-4 text-center fw-bold">Our Partners</h2>
+      <h2 className="mb-4 text-center" style={{ color: '#ecbf39', fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }}>Our Partners</h2>
 
       {message && (
         <Alert className="mt-3" variant={error ? 'danger' : 'success'}>
@@ -64,28 +64,14 @@ const OurPartners = () => {
         <ListGroup className="mt-3">
           {partners.map((partner) => (
             <ListGroup.Item
-              key={partner.id}
-              className="list-group-item-action d-flex align-items-center shadow-sm mb-3"
-              action
-              variant="light"
-              style={{
-                transition: 'background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease',
-                backgroundColor: '#f9f9f9',
-                borderRadius: '15px',
-                padding: '15px',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#e0e0e0';
-                e.currentTarget.style.transform = 'translateY(-3px) scale(1.03)';
-                e.currentTarget.style.boxShadow = '0px 12px 30px rgba(0, 0, 0, 0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#f9f9f9';
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0px 6px 12px rgba(0, 0, 0, 0.1)';
-              }}
+            key={partner.id}
+            className="list-group-item-action shadow-lg p-3 mb-3 rounded"
+            style={{
+              background: 'radial-gradient(circle, rgba(41,49,87,1) 0%, rgba(51,55,68,1) 86%)',
+              border: "0",
+            }}
             >
-              <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center ">
                 {partner.logo && (
                   <img
                     src={partner.logo}
@@ -100,17 +86,24 @@ const OurPartners = () => {
                   />
                 )}
                 <div>
-                  <h5 className="text-dark fw-bold mb-1">{partner.name}</h5>
+                  <h5 className="mb-3 fs-4" style={{ color:"#ffffff" }} >{partner.name}</h5>
                   {partner.description && (
-                    <p className="text-secondary mb-3 small">{partner.description}</p>
+                    <p className="mb-3 fs-5" 
+                      style={{ 
+                      color:"#c6c7cc", 
+                      fontFamily: 'Poppins, sans-serif' 
+                    }}>{partner.description}</p>
                   )}
                   {partner.link_page && (
                     <a
                       href={partner.link_page}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary fw-bold"
-                      style={{ textDecoration: 'underline' }}
+                      className="mb-3" 
+                      style={{ 
+                      color:"#ecbf39",
+                      textDecoration: 'underline' 
+                    }}
                     >
                       Visit {partner.name}'s page
                     </a>

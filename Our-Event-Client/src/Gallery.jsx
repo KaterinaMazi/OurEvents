@@ -46,7 +46,7 @@ const Gallery = () => {
 
   return (
     <Container className="mt-5">
-      <h1 className="mb-4 text-center">Gallery</h1>
+      <h2 className="mb-4 text-center" style={{ color: '#ecbf39', fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }}>Gallery</h2>
 
       {message && (
         <Alert variant={error ? 'danger' : 'success'}>
@@ -70,13 +70,34 @@ const Gallery = () => {
 
       {!error && !loading && (
         <>
-          <Nav variant="tabs" activeKey={activeTab} onSelect={(key) => setActiveTab(key)} className="mb-4 shadow"
-            style={{ backgroundColor: '#f5f5f0' }}>
+          <Nav
+            variant="tabs"
+            activeKey={activeTab}
+            onSelect={(key) => setActiveTab(key)}
+            className="mb-4 fs-5"
+            justify
+          >
             <Nav.Item>
-              <Nav.Link eventKey="images">Φωτογραφίες</Nav.Link>
+              <Nav.Link
+                eventKey="images"
+                style={{
+                  backgroundColor: activeTab === 'images' ? '#041221' : 'transparent',
+                  color: activeTab === 'images' ? '#ecbf39' : '#fff',
+                }}
+              >
+                Φωτογραφίες
+              </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="videos">Βίντεο</Nav.Link>
+              <Nav.Link
+                eventKey="videos"
+                style={{
+                  backgroundColor: activeTab === 'videos' ? '#041221' : 'transparent',
+                  color: activeTab === 'videos' ? '#ecbf39' : '#fff',
+                }}
+              >
+                Βίντεο
+              </Nav.Link>
             </Nav.Item>
           </Nav>
 

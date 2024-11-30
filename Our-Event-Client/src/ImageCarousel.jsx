@@ -12,29 +12,30 @@ function ImageCarousel({ mediaFiles }) {
 
     const carouselImageStyle = {
         width: '100%',
-        height: '450px',
-        objectFit: 'cover',
-        borderRadius: '15px',
         transition: 'transform 3s ease-in-out, opacity 3s ease-in-out',
+        maxHeight: '70vh', 
+        objectFit: 'contain'
+    };
+
+    const carouselContainerStyle = {
+        margin: 'auto', // κεντράρει το carousel
+        overflow: 'hidden', // διασφαλίζει ότι το περιεχόμενο δεν ξεφεύγει
     };
 
     return (
-        <Carousel fade interval={5000} pause="hover">
-            {carouselImages.map((image, index) => (
-                <Carousel.Item key={index}>
-                    <img
-                        className="d-block w-100"
-                        src={image.file}
-                        alt={`Slide ${index + 1}`}
-                        style={{ ...carouselImageStyle, transform: 'scale(1.1)' }}
-                    />
-                    <Carousel.Caption style={{ textShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)' }}>
-                        <h3>Εξερεύνησε το επόμενο event!</h3>
-                        <p>Συμμετείχε σε μοναδικές εμπειρίες με άλλους λάτρεις των εκδηλώσεων.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            ))}
-        </Carousel>
+        <div style={carouselContainerStyle} className="my-4">
+            <Carousel fade interval={5000} pause="hover">
+                {carouselImages.map((image, index) => (
+                    <Carousel.Item key={index}>
+                        <img
+                            src={image.file}
+                            alt={`Slide ${index + 1}`}
+                            style={carouselImageStyle}
+                        />
+                    </Carousel.Item>
+                ))}
+            </Carousel>
+        </div>
     );
 }
 

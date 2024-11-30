@@ -10,6 +10,7 @@ import Logout from './Logout';
 import Event from './Event.jsx';
 import RegistrationPage from './RegistrationPage.jsx';
 import Menu from './Menu.jsx';
+import Background from './Background';
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -34,7 +35,9 @@ function App() {
     }, []);
 
     return (
-        <div style={{ backgroundColor: '#f2ece4', minHeight: '100vh' }}>
+        <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+            <Background />
+            <div style={{ position: 'relative', zIndex: 1 }}>
             <BrowserRouter>
                 <Routes>
                     {checkAuthenticated && !isAuthenticated ? (
@@ -56,6 +59,7 @@ function App() {
                     ) : ''}
                 </Routes>
             </BrowserRouter>
+            </div>
         </div>
     );
 }

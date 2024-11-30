@@ -52,25 +52,25 @@ function Countdown({ eventDate, endsAt, eventIsOver }) {
                 <Card.Title className="fw-bold fs-3">Countdown to Event</Card.Title>
                 <Row className="pt-3">
                     <Col>
-                        <div className="p-2 rounded" style={{ backgroundColor: '#d9d9d9' }}>
+                        <div className="p-1 rounded" style={{ backgroundColor: '#d9d9d9' }}>
                             <h2 className="m-0">{days}</h2>
                             <small>Days</small>
                         </div>
                     </Col>
                     <Col>
-                        <div className="p-2 rounded" style={{ backgroundColor: '#d9d9d9' }}>
+                        <div className="p-1 rounded" style={{ backgroundColor: '#d9d9d9' }}>
                             <h2 className="m-0">{hours}</h2>
                             <small>Hours</small>
                         </div>
                     </Col>
                     <Col>
-                        <div className="p-2 rounded" style={{ backgroundColor: '#d9d9d9' }}>
+                        <div className="p-1 rounded" style={{ backgroundColor: '#d9d9d9' }}>
                             <h2 className="m-0">{minutes}</h2>
                             <small>Minutes</small>
                         </div>
                     </Col>
                     <Col>
-                        <div className="p-2 rounded" style={{ backgroundColor: '#d9d9d9' }}>
+                        <div className="p-1 rounded" style={{ backgroundColor: '#d9d9d9' }}>
                             <h2 className="m-0">{seconds}</h2>
                             <small>Seconds</small>
                         </div>

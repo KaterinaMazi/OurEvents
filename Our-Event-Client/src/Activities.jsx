@@ -49,7 +49,7 @@ const Activities = () => {
 
   return (
     <Container className="mt-5">
-      <h2 className="text-dark mb-4 text-center">Activities</h2>
+      <h2 className="mb-4 text-center" style={{ color: '#ecbf39', fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }}>Activities</h2>
 
       {message && (
         <Alert className="mt-3 text-center" variant={error ? 'danger' : 'success'}>
@@ -68,33 +68,38 @@ const Activities = () => {
               key={activity.id}
               className="list-group-item-action shadow-lg p-3 mb-3 rounded"
               style={{
-                backgroundColor: '#f5f5f0',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#e0e0e0';
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0px 8px 20px rgba(0, 0, 0, 0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#f5f5f0';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.1)';
+                background: 'radial-gradient(circle, rgba(41,49,87,1) 0%, rgba(51,55,68,1) 86%)',
+                border: "0",
+     
               }}
             >
-              <Card.Body style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Card.Body 
+              style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                color:"#ffffff", 
+                justifyContent: 'space-between', 
+                alignItems: 'center' 
+                }}>
                 <div style={{ flex: 1 }}>
-                  <Card.Title className="text-dark">{activity.name}</Card.Title>
+                  <Card.Title className="mb-3 fs-4">{activity.name}</Card.Title>
                   {activity.description && (
-                    <Card.Text className="text-secondary">{activity.description}</Card.Text>
+                    <Card.Text className="mb-3 fs-5" 
+                    style={{ 
+                      color:"#c6c7cc", 
+                      fontFamily: 'Poppins, sans-serif' 
+                    }}>{activity.description}</Card.Text>
                   )}
                   {activity.max_participants && (
-                    <Card.Text className="text-muted">Max Participants: {activity.max_participants}</Card.Text>
+                    <Card.Text className="mb-3" 
+                    style={{ 
+                      color:"#ffffff" 
+                    }}>Max Participants: {activity.max_participants}</Card.Text>
                   )}
                 </div>
 
                 {activity.image && (
-                  <div style={{ flexShrink: 0, marginLeft: '20px' }}>
+                  <div style={{ flexShrink: 0 }}>
                     <img
                       src={activity.image}
                       alt={activity.name}
@@ -102,19 +107,8 @@ const Activities = () => {
                         maxWidth: '300px',
                         width: '100%',
                         height: 'auto',
-                        borderRadius: '8px',
-                        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
                       }}
                     />
-                    <div
-                      style={{
-                        fontSize: '12px',
-                        color: '#777',
-                        marginTop: '8px',
-                        textAlign: 'center',
-                      }}
-                    >
-                    </div>
                   </div>
                 )}
               </Card.Body>

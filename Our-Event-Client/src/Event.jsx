@@ -12,7 +12,7 @@ const Event = () => {
     const [message, setMessage] = useState('');
     const [error, setError] = useState(null);
 
-    const eventIsOver = event ? new Date() >= event.ends_at : false
+    const eventIsOver = event ? new Date() >= new Date(event.ends_at) : false
 
     const eventFetch = async () => {
         try {
@@ -55,12 +55,25 @@ const Event = () => {
                         </Alert>
                     )}
                     {!loading && !error && event && (
-                        <Card className="shadow-lg" style={{ backgroundColor: '#f5f5f0', borderRadius: '10px', padding: '20px' }}>
+                        <Card className="shadow" 
+                        style={{ 
+                            background: 'radial-gradient(circle, rgba(41,49,87,1) 0%, rgba(51,55,68,1) 86%)', 
+                            padding: '20px', }}>
                             <Card.Body>
-                                <Card.Title as="h2" className="text-center mb-4" style={{ color: '#800000', fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }}>
+                                <Card.Title as="h2" className="text-center mb-4" 
+                                style={{ 
+                                    color: '#ecbf39', 
+                                    fontFamily: 'Poppins, sans-serif', 
+                                    fontWeight: 'bold' 
+                                }}>
                                     {event.name}
                                 </Card.Title>
-                                <Card.Text className="lead mb-4 text-muted" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                <Card.Text as="h5" className="mb-3" 
+                                style={{
+                                    color: "#ffffff", 
+                                    lineHeight: "1.5",
+                                    fontWeight: '400',
+                                    }}>
                                     {event.description}
                                 </Card.Text>
                                 <div className="text-center">
