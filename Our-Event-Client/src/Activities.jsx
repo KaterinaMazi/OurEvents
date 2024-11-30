@@ -90,12 +90,12 @@ const Activities = () => {
                       fontFamily: 'Poppins, sans-serif' 
                     }}>{activity.description}</Card.Text>
                   )}
-                  {activity.max_participants && (
+                  {activity.max_participants > 0 ? (
                     <Card.Text className="mb-3" 
                     style={{ 
                       color:"#ffffff" 
                     }}>Max Participants: {activity.max_participants}</Card.Text>
-                  )}
+                  ): null} 
                 </div>
 
                 {activity.image && (
