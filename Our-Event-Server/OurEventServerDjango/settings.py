@@ -173,7 +173,8 @@ AUTH_USER_MODEL = 'OurEventApp.User'
 SECURE_SSL_REDIRECT = False # We use nginx instead
 CSRF_COOKIE_SECURE = is_production
 SESSION_COOKIE_SECURE = is_production
-
+USE_X_FORWARDED_HOST = is_production
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 if is_production:
