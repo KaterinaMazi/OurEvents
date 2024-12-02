@@ -1,73 +1,100 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
-const Background = () => {
-    const styles = {
-        container: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            background: '#123',
-            font: '5vmin/1.3 Serif',
-            overflow: 'hidden',
-            zIndex: 0,
-            color: 'transparent',
-        },
-        dot: (x, y, color, delay, duration) => ({
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            width: '3em',
-            height: '3em',
-            content: "'.'",
-            mixBlendMode: 'screen',
-            animation: `move ${duration}s ${delay}s infinite ease-in-out alternate`,
-            textShadow: `${x}em ${y}em 7px ${color}`,
-        }),
-    };
+const BackgroundCanvas = () => {
+    const canvasRef = useRef(null);
 
-    const createDots = (count) => {
-        const dots = [];
-        for (let i = 0; i < count; i++) {
-            const randomX = (-0.5 + Math.random() * 3).toFixed(2);
-            const randomY = (-0.5 + Math.random() * 3).toFixed(2);
-            const randomHue = Math.floor(Math.random() * 360);
-            const randomColor = `hsla(${randomHue}, 100%, 50%, 0.9)`;
-            const randomDuration = (40 + Math.random() * 10).toFixed(2);
-            const randomDelay = (-30 + Math.random() * 10).toFixed(2);
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-            dots.push(
-                <div
-                    key={i}
-                    style={styles.dot(randomX, randomY, randomColor, randomDelay, randomDuration)}
-                >
-                    .
-                </div>
-            );
-        }
-        return dots;
-    };
+        const blurCanvas = document.createElement('canvas');
+        const blurCtx = blurCanvas.getContext('2d');
+        blurCanvas.width = canvas.width;
+        blurCanvas.height = canvas.height;
 
-    const keyframes = `
-        @keyframes move {
-            from {
-                transform: rotate(0deg) scale(12) translateX(-20px);
-            }
-            to {
-                transform: rotate(360deg) scale(18) translateX(20px);
-            }
-        }
-    `;
+        const dots = Array.from({ length: 10 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 100 + 50, // Large dot size (50px to 150px)
+            color: `hsla(${Math.random() * 360}, 50%, 50%, 0.6)`, // Soft, translucent color
+            angle: Math.random() * Math.PI * 2,
+            speed: Math.random() * 0.5 + 0.1, // Slow movement
+        }));
+
+        const updateDots = () => {
+            dots.forEach(dot => {
+                dot.x += Math.cos(dot.angle) * dot.speed;
+                dot.y += Math.sin(dot.angle) * dot.speed;
+
+                // Wrap around edges
+                if (dot.x > canvas.width) dot.x = 0;
+                if (dot.x < 0) dot.x = canvas.width;
+                if (dot.y > canvas.height) dot.y = 0;
+                if (dot.y < 0) dot.y = canvas.height;
+
+                dot.angle += 0.01; // Gradual direction change
+            });
+        };
+
+        const drawDots = () => {
+            // Clear both canvases
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            blurCtx.clearRect(0, 0, blurCanvas.width, blurCanvas.height);
+
+            // Draw dots on the blur canvas
+            dots.forEach(dot => {
+                blurCtx.beginPath();
+                blurCtx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+                blurCtx.fillStyle = dot.color;
+                blurCtx.fill();
+            });
+
+            // Apply blur effect using filter
+            blurCtx.filter = 'blur(40px)'; // Adjust for stronger blur
+            blurCtx.drawImage(blurCanvas, 0, 0);
+
+            // Composite blurred dots onto the main canvas
+            ctx.drawImage(blurCanvas, 0, 0);
+        };
+
+        const animate = () => {
+            updateDots();
+            drawDots();
+            requestAnimationFrame(animate);
+        };
+
+        animate();
+
+        // Handle resizing
+        const handleResize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            blurCanvas.width = canvas.width;
+            blurCanvas.height = canvas.height;
+        };
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return (
-        <>
-            <style>{keyframes}</style>
-            <div style={styles.container}>
-                {createDots(40)}
-            </div>
-        </>
+        <canvas
+            ref={canvasRef}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                zIndex: -1,
+                background: '#123',
+            }}
+        />
     );
 };
 
-export default Background;
+export default BackgroundCanvas
