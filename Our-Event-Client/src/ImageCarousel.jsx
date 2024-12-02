@@ -17,18 +17,12 @@ function ImageCarousel({ mediaFiles }) {
         objectFit: 'contain'
     };
 
-    const carouselContainerStyle = {
-        margin: 'auto', 
-        overflow: 'hidden', 
-    };
-
-    const carouselStyle = {
-        position: 'static', 
-    };
 
     return (
-        <div style={carouselContainerStyle} className="my-4">
-            <Carousel fade interval={5000} pause="hover" style={carouselStyle}>
+            <Carousel fade interval={5000} pause="hover" 
+            style={{
+                margin: "2rem 0"
+                }}>
                 {carouselImages.map((image, index) => (
                     <Carousel.Item key={index}>
                         <img
@@ -39,7 +33,6 @@ function ImageCarousel({ mediaFiles }) {
                     </Carousel.Item>
                 ))}
             </Carousel>
-        </div>
     );
 }
 
