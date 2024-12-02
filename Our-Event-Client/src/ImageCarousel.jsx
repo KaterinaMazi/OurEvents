@@ -18,13 +18,17 @@ function ImageCarousel({ mediaFiles }) {
     };
 
     const carouselContainerStyle = {
-        margin: 'auto', // κεντράρει το carousel
-        overflow: 'hidden', // διασφαλίζει ότι το περιεχόμενο δεν ξεφεύγει
+        margin: 'auto', 
+        overflow: 'hidden', 
+    };
+
+    const carouselStyle = {
+        position: 'static', 
     };
 
     return (
         <div style={carouselContainerStyle} className="my-4">
-            <Carousel fade interval={5000} pause="hover">
+            <Carousel fade interval={5000} pause="hover" style={carouselStyle}>
                 {carouselImages.map((image, index) => (
                     <Carousel.Item key={index}>
                         <img

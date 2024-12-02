@@ -111,7 +111,7 @@ function Home() {
             {error && <Alert variant="danger" className="text-center">Σφάλμα: {error}</Alert>}
 
 
-            {events && events.length === 0 && !error && (
+            {events && events.length === 0 && !loading && !error && (
                 <Alert className="mt-3 text-center" variant="info">
                     Δεν βρέθηκαν εκδηλώσεις.
                 </Alert>
